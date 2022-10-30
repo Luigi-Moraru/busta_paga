@@ -1,0 +1,53 @@
+body {
+    background-color: #2f3d52;
+    color: white;
+    font-size: 20px;
+    color-scheme: light dark;
+}
+
+table {
+    margin-top: 10px;
+    border: 1px solid;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid;
+    text-align: center;
+}
+
+/* tr.R {
+    background-color: #3a3edf;
+    color: black;
+}
+
+tr.D {
+    background-color: #40a13f;
+    color: black;
+}
+
+tr.N1 {
+    background-color: #b9ba34;
+    color: black;
+}
+
+tr.N2 {
+    background-color: #d06526;
+    color: black;
+}
+
+tr.N3 {
+    background-color: #d12f26;
+    color: black;
+}
+
+tr.ANR {
+    background-color: #cfc3ef;
+    color: black;
+}
+
+td.STR {
+    background-color: #a850ec;
+    color: black;
+} */

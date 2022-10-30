@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Ore</title>
+    <script src="calcOre.js" defer></script>
+    
+    <link rel="stylesheet" href="calcOre.css">
+</head>
+
+<body id="body">
+    Mese
+    <select id="mese">
+        <option>Gennaio</option>
+        <option>Febbraio</option>
+        <option>Marzo</option>
+        <option>Aprile</option>
+        <option>Maggio</option>
+        <option>Giugno</option>
+        <option>Luglio</option>
+        <option>Agosto</option>
+        <option>Settembre</option>
+        <option>Ottobre</option>
+        <option>Novembre</option>
+        <option>Dicembre</option>
+    </select>
+    <br>
+    <script>
+        var anno = new Date().getFullYear();
+        document.write("Anno " + anno)
+    </script>
+    <br>
+    <button onclick="avvio()" id="avvio">Process</button>
+</body>
+
+</html>
