@@ -1,8 +1,13 @@
 body {
-    background-color: #2f3d52;
+    background-color: rgb(15, 15, 66);
     color: white;
     font-size: 20px;
     color-scheme: light dark;
+}
+
+button {
+    color: white;
+    background-color: black;
 }
 
 table {
@@ -17,37 +22,11 @@ td {
     text-align: center;
 }
 
-/* tr.R {
-    background-color: #3a3edf;
-    color: black;
+tr.R {
+    background-color: #7d7ff0;
 }
 
-tr.D {
-    background-color: #40a13f;
+tr.L {
+    background-color: rgb(125, 240, 211);
     color: black;
 }
-
-tr.N1 {
-    background-color: #b9ba34;
-    color: black;
-}
-
-tr.N2 {
-    background-color: #d06526;
-    color: black;
-}
-
-tr.N3 {
-    background-color: #d12f26;
-    color: black;
-}
-
-tr.ANR {
-    background-color: #cfc3ef;
-    color: black;
-}
-
-td.STR {
-    background-color: #a850ec;
-    color: black;
-} */

@@ -101,7 +101,7 @@ function avvio() { //creazione tabella per mese vuota
 
     for (let i = 1; i <= giorni; i++) { //corpo della tabella
         row[i] = table.insertRow();
-        row[i].setAttribute('id','tr'+i);
+        row[i].setAttribute('id', 'tr' + i);
 
         data = new Date(anno + '-' + mese + '-' + i);
         data = data + "";
@@ -180,31 +180,31 @@ function wHours(i) { //compilazione delle ore per tipo turno
         case "D":
             document.getElementById('OrdDay' + i).innerHTML = '8';
             document.getElementById('OrdNight' + i).innerHTML = '';
-            document.getElementById('tr'+i).setAttribute('class','D');
+            document.getElementById('tr' + i).setAttribute('class', 'L');
             break;
         case "N1":
             document.getElementById('OrdDay' + i).innerHTML = '3';
             document.getElementById('OrdNight' + i).innerHTML = '5';
-            document.getElementById('tr'+i).setAttribute('class','N1');
+            document.getElementById('tr' + i).setAttribute('class', 'L');
             break;
         case "N2":
             document.getElementById('OrdDay' + i).innerHTML = '2';
             document.getElementById('OrdNight' + i).innerHTML = '6';
-            document.getElementById('tr'+i).setAttribute('class','N2');
+            document.getElementById('tr' + i).setAttribute('class', 'L');
             break;
         case "N3":
             document.getElementById('OrdDay' + i).innerHTML = '2';
             document.getElementById('OrdNight' + i).innerHTML = '6';
             document.getElementById('StrDay' + i).value = '2';
             document.getElementById('StrNight' + i).value = '1';
-            document.getElementById('tr'+i).setAttribute('class','N3');
+            document.getElementById('tr' + i).setAttribute('class', 'L');
             break;
         default:
             document.getElementById('OrdDay' + i).innerHTML = '';
             document.getElementById('OrdNight' + i).innerHTML = '';
             document.getElementById('StrDay' + i).value = '0';
             document.getElementById('StrNight' + i).value = '0';
-            document.getElementById('tr'+i).setAttribute('class','R');
+            document.getElementById('tr' + i).setAttribute('class', 'R');
     }
 }
 
@@ -277,6 +277,7 @@ function n1(giorni, i) { //ricorsiva per straordinari e assenze non retribuite
             lavorabili++;
         if (document.getElementById("turno" + (cont + i)).value != 'R')
             lavorati++;
+        document.getElementById('n1-' + (cont + i)).innerHTML = '';
     }
     let assenze = 0; //si incrementa per ogni assenza non retribuita
     for (let cont = 0; cont < lWeek; cont++) {
@@ -289,6 +290,9 @@ function n1(giorni, i) { //ricorsiva per straordinari e assenze non retribuite
     for (let cont = lWeek; cont > 0; cont--) {
         if (document.getElementById("turno" + (cont + i - 1)).value != 'R' && lavorati > lavorabili + straordinari) {
             document.getElementById('n1-' + (cont + i - 1)).innerHTML = 'Straordinario';
+            let n = document.getElementById('OrdDay' + (cont + i - 1)).innerHTML;
+            n = parseInt(n);
+            n = (document.getElementById('StrDay' + (cont + i - 1)).value) + n;
             straordinari++;
         }
     }
