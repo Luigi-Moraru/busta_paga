@@ -313,27 +313,27 @@ function input(giorni) { //compilazione dei turni tramite stringa
 
 function busta_paga(giorni) { //vis secondo busta paga
     let ora = 9.07643, //retribuizione per ora
-        m30 = (ora / 100 * 30).toFixed(5), //maggiorazione 30%
-        m60 = (ora / 100 * 60).toFixed(5), //maggiorazione 60%
-        s15 = (ora + (ora / 100 * 15)).toFixed(5), //straordinario 15%
-        s30 = (ora + (ora / 100 * 30)).toFixed(5), //straordinario 30%
-        s60 = (ora + (ora / 100 * 60)).toFixed(5), //straordinario 60%
-        totOrd = 0, //totale ore ordianarie
-        day, //ordinario diurno
-        night; //ordinario notturno
-    for (let i = 1; i <= giorni; i++) {
-        day = document.getElementById('OrdDay' + i).innerHTML;
-        night = document.getElementById('OrdNight' + i).innerHTML;
-        if (day == '')
-            day = '0';
-        if (night == '')
-            night = '0';
-        day = parseInt(day);
-        night = parseInt(night);
-        if (document.getElementById('n1-' + i).innerHTML != 'Straordinario') { //qui si entra nell'ordinario, se è assenza non retribuita i valori saranno 0-0 quindi non intacca il conto
-            totOrd += (day + night);
-            //if()
-        }
+        m30 = (Math.round(ora + (ora / 100 * 30))).toFixed(5), //maggiorazione 30%
+        m60 = (Math.round(ora + (ora / 100 * 60))).toFixed(5), //maggiorazione 60%
+        tot = 0; //totale
+    console.log(m30 + '-' + m60)
+    for (i = 1; i <= giorni; i++) {
+        let giorno = document.getElementById('OrdDay' + i).innerHTML,
+            notte = document.getElementById('OrdNight' + i).innerHTML;
+        if (giorno == '')
+            giorno = 0;
+        else
+            parseInt(giorno);
+        if (notte == '')
+            notte = 0;
+        else
+            parseInt(notte);
+        if (document.getElementById('ggSettimana' + i).innerHTML == 'Sun' || document.getElementById('fest' + i).checked)
+            tot += (m30 * (giorno + document.getElementById('StrDay' + i).value));
+        else
+            tot += (ora * (giorno + document.getElementById('StrDay' + i).value));
+        tot += (Math.round(m60 * (notte + document.getElementById('StrNight' + i).value)).toFixed(5));
+        
+        console.log(tot)
     }
-
 }
