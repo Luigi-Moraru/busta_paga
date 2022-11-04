@@ -313,27 +313,31 @@ function input(giorni) { //compilazione dei turni tramite stringa
 
 function busta_paga(giorni) { //vis secondo busta paga
     let ora = 9.07643, //retribuizione per ora
-        m30 = (Math.round(ora + (ora / 100 * 30))).toFixed(5), //maggiorazione 30%
-        m60 = (Math.round(ora + (ora / 100 * 60))).toFixed(5), //maggiorazione 60%
+        m30 = (ora + (ora / 100 * 30)).toFixed(5), //maggiorazione 30%
+        m60 = (ora + (ora / 100 * 60)).toFixed(5), //maggiorazione 60%
         tot = 0; //totale
-    console.log(m30 + '-' + m60)
+    console.log(m30)
+    console.log(m60)
     for (i = 1; i <= giorni; i++) {
         let giorno = document.getElementById('OrdDay' + i).innerHTML,
-            notte = document.getElementById('OrdNight' + i).innerHTML;
-        if (giorno == '')
+            notte = document.getElementById('OrdNight' + i).innerHTML,
+            gs = parseInt(document.getElementById('StrDay' + i).value), //Giorno Straordinario
+            ns = parseInt(document.getElementById('StrNight' + i).value); //Notte Straordinario
+        if (giorno === '')
             giorno = 0;
         else
-            parseInt(giorno);
-        if (notte == '')
+            giorno = parseInt(giorno);
+
+        if (notte === '')
             notte = 0;
         else
-            parseInt(notte);
+            notte = parseInt(notte);
+
         if (document.getElementById('ggSettimana' + i).innerHTML == 'Sun' || document.getElementById('fest' + i).checked)
-            tot += (m30 * (giorno + document.getElementById('StrDay' + i).value));
+            tot += (giorno + gs) * m30;
         else
-            tot += (ora * (giorno + document.getElementById('StrDay' + i).value));
-        tot += (Math.round(m60 * (notte + document.getElementById('StrNight' + i).value)).toFixed(5));
-        
+            tot += (giorno + gs) * ora;
+        tot += (notte + ns) * m60;
         console.log(tot)
     }
 }
