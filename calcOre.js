@@ -280,9 +280,9 @@ function n1(giorni, i) { //ricorsiva per straordinari e assenze non retribuite
         document.getElementById('n1-' + (cont + i)).innerHTML = '';
     }
     let assenze = 0; //si incrementa per ogni assenza non retribuita
-    for (let cont = 0; cont < lWeek; cont++) {
-        if (document.getElementById("turno" + (cont + i)).value == 'R' && lavorati + assenze < lavorabili) {
-            document.getElementById('n1-' + (cont + i)).innerHTML = 'Assenza Non Retribuita';
+    for (let cont = lWeek; cont > 0; cont--) {
+        if (document.getElementById("turno" + (cont + i - 1)).value == 'R' && lavorati + assenze < lavorabili) {
+            document.getElementById('n1-' + (cont + i - 1)).innerHTML = 'Assenza Non Retribuita';
             assenze++;
         }
     }
